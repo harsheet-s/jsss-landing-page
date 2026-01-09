@@ -1,67 +1,23 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Volume2, VolumeX, Menu, X } from 'lucide-react'
-import { useState, useRef, useEffect } from 'react'
+import { Menu, X, Phone } from 'lucide-react'
+import { useState, useEffect } from 'react'
 
 export function Hero() {
-  const [isMuted, setIsMuted] = useState(true)
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const videoRef = useRef<HTMLVideoElement>(null)
 
   // Scroll detection
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY
-      setIsScrolled(scrollTop > 50) // Show background after 50px scroll
+      setIsScrolled(scrollTop > 50)
     }
 
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
-
-  // Ensure video is muted immediately on load to prevent any audio
-  useEffect(() => {
-    if (videoRef.current) {
-      console.log('Video element found, setting up...')
-      videoRef.current.volume = 0
-      videoRef.current.muted = true
-      videoRef.current.defaultMuted = true
-      
-      // Add event listeners for debugging
-      videoRef.current.addEventListener('loadstart', () => console.log('Video: loadstart'))
-      videoRef.current.addEventListener('loadedmetadata', () => console.log('Video: loadedmetadata'))
-      videoRef.current.addEventListener('canplay', () => console.log('Video: canplay'))
-      videoRef.current.addEventListener('playing', () => console.log('Video: playing'))
-      videoRef.current.addEventListener('error', (e) => console.error('Video error:', e))
-      
-      // Force mute on play
-      videoRef.current.addEventListener('play', () => {
-        if (videoRef.current) {
-          console.log('Video play event fired')
-          videoRef.current.muted = isMuted
-          videoRef.current.volume = isMuted ? 0 : 0.7
-        }
-      })
-      
-      // Try to play the video
-      const playPromise = videoRef.current.play()
-      if (playPromise !== undefined) {
-        playPromise
-          .then(() => console.log('Video autoplay successful'))
-          .catch(error => console.error('Video autoplay failed:', error))
-      }
-    }
-  }, [])
-
-  // Update video mute state when isMuted changes
-  useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.muted = isMuted
-      videoRef.current.volume = isMuted ? 0 : 0.7
-    }
-  }, [isMuted])
 
   // Handle body scroll lock when mobile menu is open
   useEffect(() => {
@@ -71,7 +27,6 @@ export function Hero() {
       document.body.style.overflow = 'unset'
     }
 
-    // Cleanup on unmount
     return () => {
       document.body.style.overflow = 'unset'
     }
@@ -94,22 +49,14 @@ export function Hero() {
     }
   }, [isMobileMenuOpen])
 
-
-
   return (
-    <div className="relative h-screen w-full overflow-hidden bg-black">
-      {/* MASSIVE VIDEO - Takes up 95% of space */}
-      <video
-        ref={videoRef}
-        className="absolute inset-0 w-full h-full object-cover scale-110"
-        autoPlay
-        muted
-        loop
-        playsInline
-      >
-        <source src="https://mojli.s3.us-east-2.amazonaws.com/Mojli+Website+upscaled+(12mb).webm" type="video/webm" />
-        Your browser does not support the video tag.
-      </video>
+    <div className="relative h-screen w-full overflow-hidden bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-10">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `repeating-linear-gradient(45deg, transparent, transparent 35px, rgba(255,255,255,0.1) 35px, rgba(255,255,255,0.1) 70px)`,
+        }} />
+      </div>
 
       {/* Full-Width Navbar */}
       <motion.nav
@@ -121,7 +68,7 @@ export function Hero() {
         <div 
           className={`w-full px-6 sm:px-8 lg:px-12 py-4 transition-all duration-300 ease-out ${
             isScrolled 
-              ? 'bg-black/80 backdrop-blur-xl border-b border-white/10' 
+              ? 'bg-blue-900/90 backdrop-blur-xl border-b border-white/10' 
               : 'bg-transparent'
           }`}
         >
@@ -129,12 +76,13 @@ export function Hero() {
             {/* Logo */}
             <motion.div
               whileHover={{ scale: 1.05 }}
-              className="flex items-center cursor-pointer"
+              className="flex flex-col cursor-pointer"
               onClick={() => {
                 window.scrollTo({ top: 0, behavior: 'smooth' })
               }}
             >
-              <span className="font-bagel text-white text-xl tracking-wider">MOJJU</span>
+              <span className="font-black text-white text-2xl tracking-wider">JSSS</span>
+              <span className="text-white/70 text-xs tracking-wide">Technical Textiles</span>
             </motion.div>
 
             {/* Navigation Menu */}
@@ -143,7 +91,7 @@ export function Hero() {
                 href="#portfolio" 
                 className="text-white hover:text-white/80 font-medium gentle-animation hover:scale-105"
               >
-                Work
+                Capabilities
               </a>
               <a 
                 href="#about" 
@@ -155,7 +103,7 @@ export function Hero() {
                 href="#services" 
                 className="text-white hover:text-white/80 font-medium gentle-animation hover:scale-105"
               >
-                Capabilities
+                Services
               </a>
               <a 
                 href="#team" 
@@ -171,26 +119,8 @@ export function Hero() {
               </a>
             </div>
 
-            {/* Right Side - Video Controls + CTA + Mobile Menu */}
+            {/* Right Side - CTA + Mobile Menu */}
             <div className="flex items-center space-x-3 relative">
-              {/* Video Controls with Sound On indicator */}
-              <div className="relative">
-                <button
-                  onClick={() => setIsMuted(!isMuted)}
-                  className="glass-effect p-3 rounded-full text-white hover:bg-white/20 gentle-animation cursor-pointer"
-                >
-                  {isMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
-                </button>
-                
-                {/* Sound On indicator - only show when muted */}
-                {isMuted && (
-                  <div className="absolute -bottom-10 right-0 flex items-center text-white/80">
-                    <span className="whitespace-nowrap font-medium text-sm mr-2">Sound On</span>
-                    <span className="text-lg">↗</span>
-                  </div>
-                )}
-              </div>
-              
               {/* CTA Button - Hidden on mobile */}
               <motion.button
                 whileHover={{ scale: 1.05 }}
@@ -199,9 +129,10 @@ export function Hero() {
                   const contactSection = document.getElementById('contact')
                   contactSection?.scrollIntoView({ behavior: 'smooth' })
                 }}
-                className="hidden sm:block bg-red-600 backdrop-blur-sm text-white font-semibold px-6 py-3 rounded-md hover:bg-red-700 gentle-animation ml-4 cursor-pointer"
+                className="hidden sm:flex items-center gap-2 bg-orange-500 backdrop-blur-sm text-white font-semibold px-6 py-3 rounded-md hover:bg-orange-600 gentle-animation cursor-pointer"
               >
-                Book a Call
+                <Phone className="w-4 h-4" />
+                Get Quote
               </motion.button>
 
               {/* Mobile Hamburger Menu Button */}
@@ -233,7 +164,7 @@ export function Hero() {
         initial={{ x: '100%' }}
         animate={{ x: isMobileMenuOpen ? '0%' : '100%' }}
         transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-        className="md:hidden fixed top-0 right-0 h-full w-72 max-w-[85vw] bg-black/90 backdrop-blur-xl border-l border-white/10 z-[90] mobile-menu-panel pointer-events-auto"
+        className="md:hidden fixed top-0 right-0 h-full w-72 max-w-[85vw] bg-blue-900/95 backdrop-blur-xl border-l border-white/10 z-[90] mobile-menu-panel pointer-events-auto"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex flex-col h-full">
@@ -255,7 +186,7 @@ export function Hero() {
                 className="mobile-menu-link px-4 py-3 hover:text-white/80 hover:bg-white/10 rounded-lg gentle-animation font-medium text-lg active:bg-white/20"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                Work
+                Capabilities
               </a>
               <a 
                 href="#about" 
@@ -269,7 +200,7 @@ export function Hero() {
                 className="mobile-menu-link px-4 py-3 hover:text-white/80 hover:bg-white/10 rounded-lg gentle-animation font-medium text-lg active:bg-white/20"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
-                Capabilities
+                Services
               </a>
               <a 
                 href="#team" 
@@ -296,33 +227,37 @@ export function Hero() {
                 contactSection?.scrollIntoView({ behavior: 'smooth' })
                 setIsMobileMenuOpen(false)
               }}
-              className="bg-red-600 text-white font-semibold px-6 py-3 rounded-lg hover:bg-red-700 active:bg-red-800 gentle-animation mt-8 cursor-pointer"
+              className="bg-orange-500 text-white font-semibold px-6 py-3 rounded-lg hover:bg-orange-600 active:bg-orange-700 gentle-animation mt-8 cursor-pointer flex items-center justify-center gap-2"
             >
-              Book a Call
+              <Phone className="w-4 h-4" />
+              Get Quote
             </motion.button>
           </div>
         </div>
       </motion.div>
 
-
-
       {/* Big Studio Title - Lower Left */}
       <motion.div
         initial={{ opacity: 0, x: -50 }}
         animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 1, delay: 1.5 }}
+        transition={{ duration: 1, delay: 0.5 }}
         className="absolute bottom-12 left-6 sm:left-8 lg:left-12 z-40"
       >
-        <div className="max-w-2xl">
+        <div className="max-w-3xl">
+          <div className="mb-4">
+            <span className="bg-orange-500 text-white px-4 py-2 rounded-full text-sm font-semibold">
+              JAIMAL SINGH SATNAM SINGH
+            </span>
+          </div>
           <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black leading-tight text-white">
-            <span className="block">AI FILM</span>
-            <span className="block">PRODUCTION</span>
-            <span className="block">WITHOUT LIMITS</span>
+            <span className="block">TECHNICAL TEXTILE</span>
+            <span className="block">PROCESSING UNIT</span>
           </h1>
+          <p className="mt-4 text-lg text-white/80 max-w-xl">
+            Fire Resistant • Water Resistant • Dyeing • Finishing • Digital Printing
+          </p>
         </div>
       </motion.div>
-
-
     </div>
   )
 }
