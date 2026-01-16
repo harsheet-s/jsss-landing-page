@@ -39,7 +39,7 @@ export const siteConfig = {
         "Quality Assurance",
       ],
       link: "/services/processing",
-      image: "/placeholder.svg",
+      image: "/assets/service-processing.jpg",
     },
     dyeing: {
       id: "dyeing",
@@ -53,7 +53,7 @@ export const siteConfig = {
         "Quality Control",
       ],
       link: "/services/dyeing",
-      image: "/placeholder.svg",
+      image: "/assets/service-dyeing.jpg",
     },
     printing: {
       id: "printing",
@@ -67,7 +67,7 @@ export const siteConfig = {
         "Fast Turnaround",
       ],
       link: "/services/printing",
-      image: "/placeholder.svg",
+      image: "/assets/service-printing.jpg",
     },
   },
 

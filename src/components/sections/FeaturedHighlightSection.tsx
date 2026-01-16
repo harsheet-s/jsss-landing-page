@@ -3,6 +3,7 @@
 import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
 import { ScrollReveal } from '@/components/ui/ScrollReveal'
+import featuredImg from '@/assets/featured-highlight.jpg'
 
 export function FeaturedHighlightSection() {
   return (
@@ -12,8 +13,8 @@ export function FeaturedHighlightSection() {
           <ScrollReveal>
             <div className="relative aspect-[4/3] rounded-lg overflow-hidden">
               <img
-                src="/placeholder.svg"
-                alt="Featured highlight"
+                src={featuredImg}
+                alt="Facility expansion announcement"
                 className="w-full h-full object-cover"
               />
             </div>
