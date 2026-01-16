@@ -3,6 +3,7 @@
 import { Link } from 'react-router-dom'
 import { ArrowRight, Phone } from 'lucide-react'
 import { siteConfig } from '@/config/siteConfig'
+import heroBg from '@/assets/hero-bg.jpg'
 
 export function HeroSection() {
   return (
@@ -10,8 +11,8 @@ export function HeroSection() {
       {/* Background Image */}
       <div className="absolute inset-0">
         <img
-          src="/placeholder.svg"
-          alt="Hero background"
+          src={heroBg}
+          alt="JSSS Textile Processing Facility"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-foreground/70 via-foreground/50 to-foreground/80" />

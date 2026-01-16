@@ -4,7 +4,18 @@ import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
+import serviceProcessing from '@/assets/service-processing.jpg'
+import serviceDyeing from '@/assets/service-dyeing.jpg'
+import servicePrinting from '@/assets/service-printing.jpg'
+
+const serviceImages: Record<string, string> = {
+  processing: serviceProcessing,
+  dyeing: serviceDyeing,
+  printing: servicePrinting,
+}
+
 interface FeatureCardProps {
+  id?: string
   title: string
   subtitle?: string
   description: string
@@ -14,6 +25,7 @@ interface FeatureCardProps {
 }
 
 export function FeatureCard({
+  id,
   title,
   subtitle,
   description,
@@ -21,6 +33,9 @@ export function FeatureCard({
   link,
   className,
 }: FeatureCardProps) {
+  // Use imported image if available, otherwise use the provided image path
+  const imageSrc = id && serviceImages[id] ? serviceImages[id] : image
+
   return (
     <Link
       to={link}
@@ -31,7 +46,7 @@ export function FeatureCard({
     >
       <div className="relative aspect-[4/3] overflow-hidden">
         <img
-          src={image}
+          src={imageSrc}
           alt={title}
           className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
         />
