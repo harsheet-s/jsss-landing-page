@@ -154,21 +154,8 @@ stats: [
     main: [
       { label: "Home", href: "/" },
       { label: "About Us", href: "/about" },
-      { label: "Services", href: "/services", hasMegaMenu: true },
-      { label: "Blog", href: "/blog" },
-      { label: "Media", href: "/media" },
-      { label: "Careers", href: "/careers" },
+      { label: "Services", href: "/#services" },
     ],
-    secondary: {
-      label: "Resources",
-      items: [
-        { label: "Machinery", href: "/machinery" },
-        { label: "Quality Standards", href: "/quality" },
-        { label: "Certifications", href: "/certifications" },
-        { label: "Downloads", href: "/downloads" },
-        { label: "FAQs", href: "/faqs" },
-      ],
-    },
   },
 
   // Footer Links
@@ -176,17 +163,11 @@ stats: [
     ourGroup: [
       { label: "About Us", href: "/about" },
       { label: "Contact", href: "/contact" },
-      { label: "Careers", href: "/careers" },
-      { label: "Blog", href: "/blog" },
-      { label: "Media", href: "/media" },
       { label: "Terms & Conditions", href: "/terms" },
     ],
     quickLinks: [
-      { label: "Our Services", href: "/services" },
-      { label: "Machinery", href: "/machinery" },
-      { label: "Quality Standards", href: "/quality" },
+      { label: "Our Services", href: "/#services" },
       { label: "Request Quote", href: "/contact" },
-      { label: "FAQs", href: "/faqs" },
     ],
   },
 };
