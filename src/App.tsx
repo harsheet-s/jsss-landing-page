@@ -4,6 +4,9 @@ import AboutPage from './pages/AboutPage'
 import ServicesPage from './pages/ServicesPage'
 import ContactPage from './pages/ContactPage'
 import NotFound from './pages/NotFound'
+import PrintingPage from './pages/services/PrintingPage'
+import ProcessingPage from './pages/services/ProcessingPage'
+import DyeingPage from './pages/services/DyeingPage'
 
 export default function App() {
   return (
@@ -13,7 +16,9 @@ export default function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/services" element={<ServicesPage />} />
-          <Route path="/services/:category" element={<ServicesPage />} />
+          <Route path="/services/processing" element={<ProcessingPage />} />
+          <Route path="/services/dyeing" element={<DyeingPage />} />
+          <Route path="/services/printing" element={<PrintingPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/blog" element={<AboutPage />} />
           <Route path="/media" element={<AboutPage />} />
