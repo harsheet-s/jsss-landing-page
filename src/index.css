@@ -13,14 +13,14 @@
   --card-foreground: hsl(0, 0%, 10%);
   --popover: hsl(0, 0%, 100%);
   --popover-foreground: hsl(0, 0%, 10%);
-  --primary: hsl(0, 0%, 10%);
-  --primary-foreground: hsl(0, 0%, 100%);
+  --primary: var(--accent-brand);
+  --primary-foreground: var(--accent-brand-foreground);
   --secondary: hsl(0, 0%, 96%);
   --secondary-foreground: hsl(0, 0%, 10%);
   --muted: hsl(0, 0%, 96%);
   --muted-foreground: hsl(0, 0%, 45%);
-  --accent: hsl(210, 100%, 45%);
-  --accent-foreground: hsl(0, 0%, 100%);
+  --accent: var(--accent-brand);
+  --accent-foreground: var(--accent-brand-foreground);
   --destructive: hsl(0, 84%, 60%);
   --destructive-foreground: hsl(0, 0%, 100%);
   --border: hsl(0, 0%, 90%);
@@ -29,7 +29,7 @@
   --switch-background: hsl(0, 0%, 90%);
   --font-weight-medium: 500;
   --font-weight-normal: 400;
-  --ring: hsl(0, 0%, 63%);
+  --ring: var(--accent-brand);
   
   /* Corporate accent color (blue - easy to change) */
   --accent-brand: hsl(210, 100%, 45%);
@@ -60,19 +60,19 @@
   --card-foreground: hsl(0, 0%, 98%);
   --popover: hsl(0, 0%, 10%);
   --popover-foreground: hsl(0, 0%, 98%);
-  --primary: hsl(0, 0%, 98%);
-  --primary-foreground: hsl(0, 0%, 4%);
+  --primary: var(--accent-brand);
+  --primary-foreground: var(--accent-brand-foreground);
   --secondary: hsl(0, 0%, 10%);
   --secondary-foreground: hsl(0, 0%, 98%);
   --muted: hsl(0, 0%, 10%);
   --muted-foreground: hsl(0, 0%, 63%);
-  --accent: hsl(210, 100%, 50%);
-  --accent-foreground: hsl(0, 0%, 98%);
+  --accent: var(--accent-brand);
+  --accent-foreground: var(--accent-brand-foreground);
   --destructive: hsl(0, 84%, 60%);
   --destructive-foreground: hsl(0, 0%, 98%);
   --border: hsl(0, 0%, 15%);
   --input: hsl(0, 0%, 10%);
-  --ring: hsl(0, 0%, 45%);
+  --ring: var(--accent-brand);
   
   --accent-brand: hsl(210, 100%, 50%);
   --accent-brand-foreground: hsl(0, 0%, 98%);
