@@ -1,5 +1,3 @@
-'use client'
-
 import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
 import { cn } from '@/lib/utils'
@@ -33,7 +31,6 @@ export function FeatureCard({
   link,
   className,
 }: FeatureCardProps) {
-  // Use imported image if available, otherwise use the provided image path
   const imageSrc = id && serviceImages[id] ? serviceImages[id] : image
 
   return (

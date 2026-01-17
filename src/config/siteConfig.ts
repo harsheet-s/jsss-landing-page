@@ -1,4 +1,24 @@
 // Site Configuration - Easy to update content
+
+import serviceProcessing from '@/assets/service-processing.jpg'
+import serviceDyeing from '@/assets/service-dyeing.jpg'
+import servicePrinting from '@/assets/service-printing.jpg'
+
+import {
+  Plug,
+  Pipette,
+  Droplets,
+  Trash2,
+  Cloud,
+} from "lucide-react"
+
+const iconMap: Record<string, React.ElementType> = {
+  electricity: Plug,
+  glue: Pipette,
+  water: Droplets,
+  waste: Trash2,
+  co2: Cloud,
+}
 export const siteConfig = {
   // Brand
   brand: {
@@ -39,7 +59,7 @@ export const siteConfig = {
         "Quality Assurance",
       ],
       link: "/services/processing",
-      image: "/assets/service-processing.jpg",
+      image: serviceProcessing,
     },
     dyeing: {
       id: "dyeing",
@@ -53,7 +73,7 @@ export const siteConfig = {
         "Quality Control",
       ],
       link: "/services/dyeing",
-      image: "/assets/service-dyeing.jpg",
+      image: serviceDyeing,
     },
     printing: {
       id: "printing",
@@ -67,7 +87,7 @@ export const siteConfig = {
         "Fast Turnaround",
       ],
       link: "/services/printing",
-      image: "/assets/service-printing.jpg",
+      image: servicePrinting,
     },
   },
 
@@ -83,14 +103,16 @@ export const siteConfig = {
     { name: "Mercerizer", description: "Cotton treatment" },
   ],
 
-  // Stats for "Why Choose Us" section
-  stats: [
-    { value: "57%", label: "Faster Turnaround", icon: "clock" },
-    { value: "97%", label: "Quality Consistency", icon: "check" },
-    { value: "62%", label: "Reduced Waste", icon: "leaf" },
-    { value: "85%", label: "Improved Efficiency", icon: "trending-up" },
-    { value: "95%", label: "Customer Satisfaction", icon: "smile" },
-  ],
+
+  // Stats for "Digital over Conventional" section
+stats: [
+  { value: "57%", label: "LESS USE OF ELECTRICITY", icon: "electricity" },
+  { value: "97%", label: "LESS USE OF GLUE", icon: "glue" },
+  { value: "62%", label: "LESS USE OF WATER", icon: "water" },
+  { value: "85%", label: "LESS WASTE", icon: "waste" },
+  { value: "95%", label: "LESS CO2 EMISSION", icon: "co2" },
+],
+
 
   // Capacities
   capacities: {

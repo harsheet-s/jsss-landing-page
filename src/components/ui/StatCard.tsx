@@ -1,51 +1,51 @@
 'use client'
 
-import { Clock, CheckCircle, Leaf, TrendingUp, Smile } from 'lucide-react'
 import { cn } from '@/lib/utils'
+import { Clock, CheckCircle2, Leaf, TrendingUp, Smile } from 'lucide-react'
 
-interface StatCardProps {
-  value: string
-  label: string
-  icon: string
-  dark?: boolean
-  className?: string
-}
-
-const iconMap = {
+const iconMap: Record<string, React.ElementType> = {
   clock: Clock,
-  check: CheckCircle,
+  check: CheckCircle2,
   leaf: Leaf,
   'trending-up': TrendingUp,
   smile: Smile,
 }
 
-export function StatCard({ value, label, icon, dark = false, className }: StatCardProps) {
-  const Icon = iconMap[icon as keyof typeof iconMap] || CheckCircle
+interface StatCardProps {
+  value: string
+  label: string
+  icon?: string
+  dark?: boolean
+  className?: string
+}
+
+export function StatCard({ value, label, icon, dark, className }: StatCardProps) {
+  const Icon = icon ? iconMap[icon] : undefined
 
   return (
     <div
       className={cn(
-        'text-center p-6 rounded-lg',
-        dark ? 'bg-background/5' : 'bg-muted',
+        'relative flex flex-col items-center text-center',
         className
       )}
     >
-      <div className={cn(
-        'w-12 h-12 rounded-full mx-auto mb-4 flex items-center justify-center',
-        dark ? 'bg-accent' : 'bg-accent'
-      )}>
-        <Icon className="w-6 h-6 text-accent-foreground" />
+      {/* Icon */}
+      <div
+        className={cn(
+          'mb-5 flex h-12 w-12 items-center justify-center rounded-full',
+          dark ? 'bg-accent text-accent-foreground' : 'bg-accent text-accent-foreground'
+        )}
+      >
+        {Icon ? <Icon className="h-6 w-6" /> : null}
       </div>
-      <div className={cn(
-        'text-4xl md:text-5xl font-black mb-2',
-        dark ? 'text-background' : 'text-foreground'
-      )}>
+
+      {/* Value */}
+      <div className={cn('text-5xl font-black tracking-tight', dark ? 'text-background' : 'text-foreground')}>
         {value}
       </div>
-      <div className={cn(
-        'text-sm font-medium uppercase tracking-wider',
-        dark ? 'text-background/70' : 'text-muted-foreground'
-      )}>
+
+      {/* Label */}
+      <div className={cn('mt-2 text-xs font-semibold uppercase tracking-[0.24em]', dark ? 'text-background/70' : 'text-muted-foreground')}>
         {label}
       </div>
     </div>
