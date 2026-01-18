@@ -174,10 +174,6 @@ stats: [
     ourGroup: [
       { label: "About Us", href: "/about" },
       { label: "Contact", href: "/contact" },
-      { label: "Careers", href: "/careers" },
-      { label: "Blog", href: "/blog" },
-      { label: "Media", href: "/media" },
-      { label: "Terms & Conditions", href: "/terms" },
     ],
     quickLinks: [
       { label: "Our Services", href: "/services" },
