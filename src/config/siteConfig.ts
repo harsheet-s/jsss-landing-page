@@ -31,9 +31,9 @@ export const siteConfig = {
   // Contact Information
   contact: {
     phone: "+91 98765 43210",
-    email: "info@jsss.com",
+    email: "jaimalsinghsatnamsingh1972@gmail.com",
     whatsapp: "+919876543210",
-    address: "Industrial Area, Ludhiana, Punjab, India",
+    address: "Rahon Road, Bajrah Village, Ludhiana, Punjab, India, 141007",
   },
 
   // Social Links
@@ -104,7 +104,7 @@ export const siteConfig = {
   ],
 
 
-  // Stats for "Digital over Conventional" section
+// Stats for "Digital over Conventional" section
 stats: [
   { value: "57%", label: "LESS USE OF ELECTRICITY", icon: "electricity" },
   { value: "97%", label: "LESS USE OF GLUE", icon: "glue" },
@@ -154,8 +154,19 @@ stats: [
     main: [
       { label: "Home", href: "/" },
       { label: "About Us", href: "/about" },
-      { label: "Services", href: "/#services" },
+      { label: "Services", href: "/services", hasMegaMenu: true },
+      
     ],
+    secondary: {
+      label: "Resources",
+      items: [
+        { label: "Machinery", href: "/machinery" },
+        { label: "Quality Standards", href: "/quality" },
+        { label: "Certifications", href: "/certifications" },
+        { label: "Downloads", href: "/downloads" },
+        { label: "FAQs", href: "/faqs" },
+      ],
+    },
   },
 
   // Footer Links
@@ -163,11 +174,17 @@ stats: [
     ourGroup: [
       { label: "About Us", href: "/about" },
       { label: "Contact", href: "/contact" },
+      { label: "Careers", href: "/careers" },
+      { label: "Blog", href: "/blog" },
+      { label: "Media", href: "/media" },
       { label: "Terms & Conditions", href: "/terms" },
     ],
     quickLinks: [
-      { label: "Our Services", href: "/#services" },
+      { label: "Our Services", href: "/services" },
+      { label: "Machinery", href: "/machinery" },
+      { label: "Quality Standards", href: "/quality" },
       { label: "Request Quote", href: "/contact" },
+      { label: "FAQs", href: "/faqs" },
     ],
   },
 };

@@ -188,58 +188,57 @@ export default function AboutPage() {
         </section>
 
         {/* Mission & Vision Section */}
-        <section className="py-20 lg:py-32 bg-background">
-          <div className="container mx-auto px-4 lg:px-8">
-            <div className="grid md:grid-cols-2 gap-12 lg:gap-0">
-              {/* Mission */}
-              <ScrollReveal>
-                <div className="lg:pr-16 xl:pr-24">
-                  <div className="flex flex-col items-start">
-                    <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-8">
-                      <Target className="w-8 h-8 text-primary" />
-                    </div>
-                    <div className="mb-6">
-                      <span className="block text-sm font-semibold tracking-widest uppercase text-muted-foreground">
-                        Our
-                      </span>
-                      <span className="block text-4xl md:text-5xl font-bold text-foreground tracking-tight">
-                        MISSION
-                      </span>
-                    </div>
-                    <p className="text-muted-foreground leading-relaxed text-lg">
-                      To deliver reliable, high-quality textile processing solutions through technical expertise, process discipline, and continuous innovation, while upholding the values of integrity, consistency, and long-term partnerships across domestic and global markets.
-                    </p>
-                  </div>
-                </div>
-              </ScrollReveal>
-
-              {/* Vertical Divider (Desktop) */}
-              <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-px bg-border -translate-x-1/2" style={{ position: 'relative', left: 0, width: '1px', background: 'hsl(var(--border))' }}></div>
-
-              {/* Vision */}
-              <ScrollReveal delay={0.2}>
-                <div className="lg:pl-16 xl:pl-24 md:border-l border-border">
-                  <div className="flex flex-col items-start">
-                    <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-8">
-                      <Eye className="w-8 h-8 text-primary" />
-                    </div>
-                    <div className="mb-6">
-                      <span className="block text-sm font-semibold tracking-widest uppercase text-muted-foreground">
-                        Our
-                      </span>
-                      <span className="block text-4xl md:text-5xl font-bold text-foreground tracking-tight">
-                        VISION
-                      </span>
-                    </div>
-                    <p className="text-muted-foreground leading-relaxed text-lg">
-                      To be a trusted and forward-looking textile processing enterprise, recognized for technical excellence, responsible manufacturing, and the ability to evolve with changing industry demands—while preserving the heritage and values that define Jaimal Singh Satnam Singh.
-                    </p>
-                  </div>
-                </div>
-              </ScrollReveal>
+<section className="py-20 lg:py-32 bg-background">
+  <div className="container mx-auto px-4 lg:px-8">
+    <div className="grid grid-cols-1 md:grid-cols-2 md:divide-x md:divide-border">
+      
+      {/* Mission */}
+      <ScrollReveal>
+        <div className="py-16 md:pr-16 xl:pr-24">
+          <div className="flex flex-col items-start">
+            <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-8">
+              <Target className="w-8 h-8 text-primary" />
             </div>
+            <div className="mb-6">
+              <span className="block text-sm font-semibold tracking-widest uppercase text-muted-foreground">
+                Our
+              </span>
+              <span className="block text-4xl md:text-5xl font-bold text-foreground tracking-tight">
+                MISSION
+              </span>
+            </div>
+            <p className="text-muted-foreground leading-relaxed text-lg">
+              To deliver reliable, high-quality textile processing solutions through technical expertise, process discipline, and continuous innovation, while upholding the values of integrity, consistency, and long-term partnerships across domestic and global markets.
+            </p>
           </div>
-        </section>
+        </div>
+      </ScrollReveal>
+
+      {/* Vision */}
+      <ScrollReveal delay={0.2}>
+        <div className="py-16 md:pl-16 xl:pl-24">
+          <div className="flex flex-col items-start">
+            <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-8">
+              <Eye className="w-8 h-8 text-primary" />
+            </div>
+            <div className="mb-6">
+              <span className="block text-sm font-semibold tracking-widest uppercase text-muted-foreground">
+                Our
+              </span>
+              <span className="block text-4xl md:text-5xl font-bold text-foreground tracking-tight">
+                VISION
+              </span>
+            </div>
+            <p className="text-muted-foreground leading-relaxed text-lg">
+              To be a trusted and forward-looking textile processing enterprise, recognized for technical excellence, responsible manufacturing, and the ability to evolve with changing industry demands—while preserving the heritage and values that define Jaimal Singh Satnam Singh.
+            </p>
+          </div>
+        </div>
+      </ScrollReveal>
+
+    </div>
+  </div>
+</section>
 
         {/* Values Section */}
         <section className="py-20 lg:py-32 bg-foreground text-background">
