@@ -1,6 +1,7 @@
 'use client'
 
-import { Phone, MessageCircle } from 'lucide-react'
+import { Mail } from 'lucide-react'
+import { Link } from 'react-router-dom'
 import { ScrollReveal } from '@/components/ui/ScrollReveal'
 import { siteConfig } from '@/config/siteConfig'
 
@@ -22,32 +23,30 @@ export function CTASection() {
         <ScrollReveal delay={100}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto">
             <a
-              href={`https://wa.me/${siteConfig.contact.whatsapp}`}
-              target="_blank"
-              rel="noopener noreferrer"
+              href={`mailto:${siteConfig.contact.email}`}
               className="flex items-center justify-center gap-4 p-6 bg-accent-foreground text-accent rounded-lg hover:opacity-90 transition-opacity group"
             >
               <div className="w-14 h-14 rounded-full bg-accent flex items-center justify-center">
-                <MessageCircle className="w-7 h-7 text-accent-foreground" />
+                <Mail className="w-7 h-7 text-accent-foreground" />
               </div>
               <div className="text-left">
-                <div className="font-bold text-lg uppercase tracking-wider">WhatsApp</div>
-                <div className="text-sm opacity-80">Chat with us now</div>
+                <div className="font-bold text-lg uppercase tracking-wider">Email Us</div>
+                <div className="text-sm opacity-80">Send us an email</div>
               </div>
             </a>
 
-            <a
-              href={`tel:${siteConfig.contact.phone}`}
+            <Link
+              to="/contact"
               className="flex items-center justify-center gap-4 p-6 bg-accent-foreground text-accent rounded-lg hover:opacity-90 transition-opacity group"
             >
               <div className="w-14 h-14 rounded-full bg-accent flex items-center justify-center">
-                <Phone className="w-7 h-7 text-accent-foreground" />
+                <Mail className="w-7 h-7 text-accent-foreground" />
               </div>
               <div className="text-left">
-                <div className="font-bold text-lg uppercase tracking-wider">Call Us</div>
-                <div className="text-sm opacity-80">{siteConfig.contact.phone}</div>
+                <div className="font-bold text-lg uppercase tracking-wider">Contact Form</div>
+                <div className="text-sm opacity-80">Fill out our form</div>
               </div>
-            </a>
+            </Link>
           </div>
         </ScrollReveal>
       </div>

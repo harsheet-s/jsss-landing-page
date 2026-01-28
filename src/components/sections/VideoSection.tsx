@@ -1,9 +1,7 @@
 'use client'
 
-import { Play } from 'lucide-react'
 import { SectionHeading } from '@/components/ui/SectionHeading'
 import { ScrollReveal } from '@/components/ui/ScrollReveal'
-import videoThumb from '@/assets/video-thumbnail.jpg'
 
 export function VideoSection() {
   return (
@@ -19,17 +17,16 @@ export function VideoSection() {
           </ScrollReveal>
 
           <ScrollReveal delay={100}>
-            <div className="relative aspect-video rounded-lg overflow-hidden bg-muted group cursor-pointer">
-              <img
-                src={videoThumb}
-                alt="Corporate video thumbnail"
-                className="w-full h-full object-cover"
+            <div className="relative w-full aspect-video rounded-lg overflow-hidden bg-muted">
+              <iframe
+                className="absolute inset-0 w-full h-full"
+                src="https://www.youtube.com/embed/BXjwTxb8NNM?si=Lm5pNxaJLdDDEZHL"
+                title="YouTube video player"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
               />
-              <div className="absolute inset-0 bg-foreground/40 flex items-center justify-center group-hover:bg-foreground/50 transition-colors">
-                <div className="w-20 h-20 rounded-full bg-accent flex items-center justify-center group-hover:scale-110 transition-transform">
-                  <Play className="w-8 h-8 text-accent-foreground ml-1" />
-                </div>
-              </div>
             </div>
           </ScrollReveal>
         </div>

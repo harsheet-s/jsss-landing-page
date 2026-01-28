@@ -1,7 +1,7 @@
 'use client'
 
 import { Link } from 'react-router-dom'
-import { Phone, Mail, MessageCircle, Facebook, Instagram, Twitter, Linkedin, Youtube } from 'lucide-react'
+import { Mail, Facebook, Instagram, Twitter, Linkedin, Youtube } from 'lucide-react'
 import { siteConfig } from '@/config/siteConfig'
 
 export function Footer() {
@@ -28,27 +28,11 @@ export function Footer() {
                 </h3>
                 <div className="space-y-3">
                   <a
-                    href={`tel:${siteConfig.contact.phone}`}
-                    className="flex items-center gap-3 text-background/80 hover:text-background transition-colors text-sm"
-                  >
-                    <Phone className="w-4 h-4" />
-                    {siteConfig.contact.phone}
-                  </a>
-                  <a
                     href={`mailto:${siteConfig.contact.email}`}
                     className="flex items-center gap-3 text-background/80 hover:text-background transition-colors text-sm"
                   >
                     <Mail className="w-4 h-4" />
                     {siteConfig.contact.email}
-                  </a>
-                  <a
-                    href={`https://wa.me/${siteConfig.contact.whatsapp}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-3 text-background/80 hover:text-background transition-colors text-sm"
-                  >
-                    <MessageCircle className="w-4 h-4" />
-                    WhatsApp
                   </a>
                 </div>
               </div>

@@ -12,14 +12,14 @@ import gallery7 from '@/assets/gallery-7.jpg'
 import gallery8 from '@/assets/gallery-8.jpg'
 
 const galleryImages = [
-  { id: 1, src: gallery1, alt: 'Quality control inspection' },
-  { id: 2, src: gallery2, alt: 'Fabric warehouse inventory' },
-  { id: 3, src: gallery3, alt: 'Stenter finishing machine' },
-  { id: 4, src: gallery4, alt: 'Fabric color swatches' },
-  { id: 5, src: gallery5, alt: 'Jigger dyeing process' },
-  { id: 6, src: gallery6, alt: 'Factory exterior' },
-  { id: 7, src: gallery7, alt: 'Sublimation printed fabric' },
-  { id: 8, src: gallery8, alt: 'Mercerizing equipment' },
+  { id: 1, src: gallery1, alt: 'Fire resistant fabric testing' },
+  { id: 2, src: gallery2, alt: 'Red fabric dyeing machine' },
+  { id: 3, src: gallery3, alt: 'Water resistant fabric closeup' },
+  { id: 4, src: gallery4, alt: 'Fabric processing machinery' },
+  { id: 5, src: gallery5, alt: 'Industrial textile equipment' },
+  { id: 6, src: gallery6, alt: 'Fabric roll finishing' },
+  { id: 7, src: gallery7, alt: 'Stenter finishing machine' },
+  { id: 8, src: gallery8, alt: 'Factory floor machinery' },
 ]
 
 export function GallerySection() {
