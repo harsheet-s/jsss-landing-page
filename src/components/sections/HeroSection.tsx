@@ -3,7 +3,7 @@
 import { Link } from 'react-router-dom'
 import { ArrowRight, Phone } from 'lucide-react'
 import { siteConfig } from '@/config/siteConfig'
-import heroBg from '@/assets/hero-bg.jpg'
+import heroBg from '@/assets/hero-bg.png'
 
 export function HeroSection() {
   return (
