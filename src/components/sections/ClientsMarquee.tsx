@@ -71,17 +71,20 @@ export function ClientsMarquee() {
     // Also re-measure on window resize
     window.addEventListener('resize', measure)
 
-    const SPEED_PX_PER_FRAME = 0.7 // adjust: 0.4 slower, 1.2 faster
+    const isMobile = window.matchMedia('(max-width: 768px)').matches
+    const SPEED_PX_PER_FRAME = isMobile ? 1.2 : 0.7
+
 
     const tick = () => {
-      const hw = halfWidthRef.current
-      if (!isPausedRef.current && hw > 0) {
-        offsetRef.current += SPEED_PX_PER_FRAME
-        if (offsetRef.current >= hw) offsetRef.current = 0
-        track.style.transform = `translateX(-${offsetRef.current}px)`
-      }
-      rafRef.current = requestAnimationFrame(tick)
-    }
+  const hw = halfWidthRef.current
+  if (!isPausedRef.current && hw > 0) {
+    offsetRef.current += SPEED_PX_PER_FRAME
+    if (offsetRef.current >= hw) offsetRef.current = 0
+    track.style.transform = `translateX(-${offsetRef.current}px)`
+  }
+  rafRef.current = requestAnimationFrame(tick)
+}
+
 
     rafRef.current = requestAnimationFrame(tick)
 
