@@ -1,5 +1,6 @@
 'use client'
 
+import { useEffect, useMemo, useRef } from 'react'
 import { ScrollReveal } from '@/components/ui/ScrollReveal'
 
 // Import client logos
@@ -24,8 +25,71 @@ const clients = [
 ]
 
 export function ClientsMarquee() {
-  // Duplicate array for seamless loop
-  const duplicatedClients = [...clients, ...clients]
+  const trackRef = useRef<HTMLDivElement | null>(null)
+  const rafRef = useRef<number | null>(null)
+  const offsetRef = useRef(0)
+  const halfWidthRef = useRef(0)
+  const isPausedRef = useRef(false)
+
+  // Duplicate list for seamless loop
+  const duplicatedClients = useMemo(() => [...clients, ...clients], [])
+
+  useEffect(() => {
+    const track = trackRef.current
+    if (!track) return
+
+    const measure = () => {
+      // total scrollWidth is for duplicated list; half is one full set
+      const total = track.scrollWidth
+      halfWidthRef.current = total / 2
+      // reset to avoid jumps after resize
+      offsetRef.current = 0
+      track.style.transform = `translateX(0px)`
+    }
+
+    // Measure after images load (important!)
+    const imgEls = Array.from(track.querySelectorAll('img'))
+    let pending = imgEls.length
+
+    const onImgDone = () => {
+      pending -= 1
+      if (pending <= 0) measure()
+    }
+
+    if (pending === 0) {
+      measure()
+    } else {
+      imgEls.forEach((img) => {
+        if (img.complete) onImgDone()
+        else {
+          img.addEventListener('load', onImgDone, { once: true })
+          img.addEventListener('error', onImgDone, { once: true })
+        }
+      })
+    }
+
+    // Also re-measure on window resize
+    window.addEventListener('resize', measure)
+
+    const SPEED_PX_PER_FRAME = 0.7 // adjust: 0.4 slower, 1.2 faster
+
+    const tick = () => {
+      const hw = halfWidthRef.current
+      if (!isPausedRef.current && hw > 0) {
+        offsetRef.current += SPEED_PX_PER_FRAME
+        if (offsetRef.current >= hw) offsetRef.current = 0
+        track.style.transform = `translateX(-${offsetRef.current}px)`
+      }
+      rafRef.current = requestAnimationFrame(tick)
+    }
+
+    rafRef.current = requestAnimationFrame(tick)
+
+    return () => {
+      window.removeEventListener('resize', measure)
+      if (rafRef.current) cancelAnimationFrame(rafRef.current)
+    }
+  }, [])
 
   return (
     <section className="py-20 lg:py-32 bg-background">
@@ -55,32 +119,36 @@ export function ClientsMarquee() {
 
         {/* Logo Marquee */}
         <div className="relative overflow-hidden py-8">
-          {/* Left fade gradient */}
-          <div className="absolute left-0 top-0 bottom-0 w-16 md:w-24 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none"></div>
-          
-          {/* Right fade gradient */}
-          <div className="absolute right-0 top-0 bottom-0 w-16 md:w-24 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none"></div>
+          {/* Left fade */}
+          <div className="absolute left-0 top-0 bottom-0 w-16 md:w-24 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
+          {/* Right fade */}
+          <div className="absolute right-0 top-0 bottom-0 w-16 md:w-24 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
 
-          {/* Marquee track */}
-          <div 
-            className="flex w-max"
-            style={{
-              animation: 'marquee 25s linear infinite',
-            }}
+          <div
+            className="w-full overflow-hidden"
+            onMouseEnter={() => (isPausedRef.current = true)}
+            onMouseLeave={() => (isPausedRef.current = false)}
           >
-            {duplicatedClients.map((client, index) => (
-              <div
-                key={`${client.alt}-${index}`}
-                className="flex-shrink-0 mx-6 md:mx-10 flex items-center justify-center w-[100px] h-[50px] md:w-[120px] md:h-[60px]"
-              >
-                <img
-                  src={client.src}
-                  alt={client.alt}
-                  className="max-w-full max-h-full w-auto h-auto object-contain grayscale opacity-60 hover:opacity-90 transition-opacity duration-300"
-                />
-              </div>
-            ))}
+            <div
+              ref={trackRef}
+              className="flex w-max will-change-transform"
+            >
+              {duplicatedClients.map((client, index) => (
+                <div
+                  key={`${client.alt}-${index}`}
+                  className="flex-shrink-0 mx-6 md:mx-10 flex items-center justify-center w-[120px] h-[70px]"
+                >
+                  <img
+                    src={client.src}
+                    alt={client.alt}
+                    loading="lazy"
+                    className="max-w-full max-h-full w-auto h-auto object-contain grayscale opacity-60 hover:opacity-90 transition-opacity duration-300"
+                  />
+                </div>
+              ))}
+            </div>
           </div>
+
         </div>
       </div>
     </section>
