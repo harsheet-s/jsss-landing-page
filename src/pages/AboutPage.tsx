@@ -5,6 +5,7 @@ import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import { ScrollReveal } from '@/components/ui/ScrollReveal'
 import { Button } from '@/components/ui/button'
+import { ClientsMarquee } from '@/components/sections/ClientsMarquee'
 import { 
   Target, 
   Eye, 
@@ -239,6 +240,9 @@ export default function AboutPage() {
     </div>
   </div>
 </section>
+
+        {/* Our Clients Section */}
+        <ClientsMarquee />
 
         {/* Values Section */}
         <section className="py-20 lg:py-32 bg-foreground text-background">
