@@ -54,31 +54,34 @@ export function ClientsMarquee() {
         </ScrollReveal>
 
         {/* Logo Marquee */}
-        <ScrollReveal delay={0.2}>
-          <div className="relative overflow-hidden py-8">
-            {/* Left fade gradient */}
-            <div className="absolute left-0 top-0 bottom-0 w-16 md:w-24 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none"></div>
-            
-            {/* Right fade gradient */}
-            <div className="absolute right-0 top-0 bottom-0 w-16 md:w-24 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none"></div>
+        <div className="relative overflow-hidden py-8">
+          {/* Left fade gradient */}
+          <div className="absolute left-0 top-0 bottom-0 w-16 md:w-24 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none"></div>
+          
+          {/* Right fade gradient */}
+          <div className="absolute right-0 top-0 bottom-0 w-16 md:w-24 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none"></div>
 
-            {/* Marquee track */}
-            <div className="flex animate-marquee w-max">
-              {duplicatedClients.map((client, index) => (
-                <div
-                  key={`${client.alt}-${index}`}
-                  className="flex-shrink-0 mx-6 md:mx-10 flex items-center justify-center w-[100px] h-[50px] md:w-[120px] md:h-[60px]"
-                >
-                  <img
-                    src={client.src}
-                    alt={client.alt}
-                    className="max-w-full max-h-full w-auto h-auto object-contain grayscale opacity-60 hover:opacity-90 transition-opacity duration-300"
-                  />
-                </div>
-              ))}
-            </div>
+          {/* Marquee track */}
+          <div 
+            className="flex w-max"
+            style={{
+              animation: 'marquee 25s linear infinite',
+            }}
+          >
+            {duplicatedClients.map((client, index) => (
+              <div
+                key={`${client.alt}-${index}`}
+                className="flex-shrink-0 mx-6 md:mx-10 flex items-center justify-center w-[100px] h-[50px] md:w-[120px] md:h-[60px]"
+              >
+                <img
+                  src={client.src}
+                  alt={client.alt}
+                  className="max-w-full max-h-full w-auto h-auto object-contain grayscale opacity-60 hover:opacity-90 transition-opacity duration-300"
+                />
+              </div>
+            ))}
           </div>
-        </ScrollReveal>
+        </div>
       </div>
     </section>
   )
