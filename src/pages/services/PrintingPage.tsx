@@ -65,7 +65,7 @@ export default function PrintingPage() {
                 {/* Capacity Stats */}
                 <div className="flex flex-wrap gap-8 mt-10">
                   <div className="bg-background/10 backdrop-blur-sm rounded-lg px-6 py-4 border border-background/20">
-                    <div className="text-3xl md:text-4xl font-bold text-primary">25,000</div>
+                    <div className="text-3xl md:text-4xl font-bold text-primary">30,000</div>
                     <div className="text-sm text-background/70">meters/day Digital</div>
                   </div>
                   <div className="bg-background/10 backdrop-blur-sm rounded-lg px-6 py-4 border border-background/20">
@@ -99,14 +99,14 @@ export default function PrintingPage() {
                   <div className="flex items-center gap-4 mb-8 p-4 bg-primary/5 rounded-lg border border-primary/20">
                     <Gauge className="w-10 h-10 text-primary flex-shrink-0" />
                     <div>
-                      <div className="text-2xl font-bold text-foreground">25,000 meters/day</div>
+                      <div className="text-2xl font-bold text-foreground">30,000 meters/day</div>
                       <div className="text-sm text-muted-foreground">Production Capacity</div>
                     </div>
                   </div>
                   
                   <div className="space-y-4 text-muted-foreground leading-relaxed mb-8">
                     <p>
-                      Jaimal Singh Satnam Singh offers high-volume, precision-driven digital printing job work backed by advanced infrastructure and deep process expertise. With a daily production capacity exceeding 25,000 meters, we are equipped to handle large-scale requirements while maintaining consistent quality, color accuracy, and repeatability across every lot.
+                      Jaimal Singh Satnam Singh offers high-volume, precision-driven digital printing job work backed by advanced infrastructure and deep process expertise. With a daily production capacity exceeding 30,000 meters, we are equipped to handle large-scale requirements while maintaining consistent quality, color accuracy, and repeatability across every lot.
                     </p>
                     <p>
                       We undertake digital printing on a wide range of natural and semi-natural fabrics, including cotton, viscose, pashmina, crepe, chiffon, organza, and other compatible textile substrates. Our processes are optimized to ensure sharp detailing, excellent color penetration, and durable wash performance, making our printed fabrics suitable for both domestic and export markets.
